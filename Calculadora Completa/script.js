@@ -8,15 +8,16 @@ function adicionarNumero(numero) {
 }
 
 function adicionarOperador(op) {
-    if (display.value === '') return;
+    if (display.value === '' || operador !== '') return;
     valor1 = display.value;
     operador = op;
-    display.value = '';
+    display.value += ' ' + operador + ' '; 
 }
 
 function calcular() {
     if (valor1 === '' || display.value === '') return;
-    valor2 = display.value;
+    
+    valor2 = display.value.split(' ').pop();
 
     let resultado;
     switch (operador) {
@@ -30,6 +31,10 @@ function calcular() {
             resultado = parseFloat(valor1) * parseFloat(valor2);
             break;
         case '/':
+            if (parseFloat(valor2) === 0) {
+                display.value = 'Erro';
+                return;
+            }
             resultado = parseFloat(valor1) / parseFloat(valor2);
             break;
         case '%':
