@@ -11,7 +11,7 @@ function adicionarOperador(op) {
     if (display.value === '' || operador !== '') return;
     valor1 = display.value;
     operador = op;
-    display.value += ' ' + operador + ' '; 
+    display.value += ' ' + operador + ' ';
 }
 
 function calcular() {
